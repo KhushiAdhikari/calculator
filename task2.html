@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature converter</h1>
+        <div class="converter">
+            <label for="degrees">Degrees</label>
+            <input type="number" id="degrees" placeholder="Enter degrees">
+
+            <label for="type">Type</label>
+            <select id="type">
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="celsius">Celsius</option>
+            </select>
+
+            <label for="result">Result</label>
+            <input type="text" id="result" disabled>
+
+            <button onclick="convertTemperature()">Convert</button>
+        </div>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            const degrees = parseFloat(document.getElementById('degrees').value);
+            const type = document.getElementById('type').value;
+            let result;
+
+            if (isNaN(degrees)) {
+                alert("Please enter a valid number");
+                return;
+            }
+
+            if (type === 'fahrenheit') {
+                result = ((degrees - 32) * 5/9).toFixed(5) + " °C";
+            } else if (type === 'celsius') {
+                result = ((degrees * 9/5) + 32).toFixed(5) + " °F";
+            }
+
+            document.getElementById('result').value = result;
+        }
+    </script>
+</body>
+</html>
